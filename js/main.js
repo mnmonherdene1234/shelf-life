@@ -1,7 +1,8 @@
 import Game from "./Game.js";
-import Image from "./Image.js";
-import Rectangle from "./Rectangle.js";
-import Text from "./Text.js";
+import Image from "./components/Image.js";
+import Rectangle from "./components/Rectangle.js";
+import Text from "./components/Text.js";
+import { playButtonPage } from "./play-button-page.js";
 
 export const game = new Game();
 game.canvas.hidden = true;
@@ -18,27 +19,4 @@ game.components.push(helloWorld);
 const startButton = new Image("/images/start-button.png", 170, 100, 100, 60);
 game.components.push(startButton);
 
-const button = document.createElement("button");
-button.innerHTML = "PLAY";
-
-button.addEventListener("click", () => {
-  game.canvas.hidden = false;
-
-  if (game.canvas.requestFullscreen) {
-    game.canvas.requestFullscreen();
-  } else if (game.canvas.mozRequestFullScreen) {
-    game.canvas.mozRequestFullScreen(); // Firefox
-  } else if (game.canvas.webkitRequestFullscreen) {
-    game.canvas.webkitRequestFullscreen(); // Chrome, Safari, and Opera
-  } else if (game.canvas.msRequestFullscreen) {
-    game.canvas.msRequestFullscreen(); // Internet Explorer and Edge
-  }
-});
-
-document.body.append(button);
-
-document.addEventListener("fullscreenchange", (event) => {
-  if (!document.fullscreenElement) {
-    game.canvas.hidden = true;
-  }
-});
+playButtonPage();

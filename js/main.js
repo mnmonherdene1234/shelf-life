@@ -1,4 +1,5 @@
 import Game from "./Game.js";
+import Image from "./Image.js";
 import Rectangle from "./Rectangle.js";
 import Text from "./Text.js";
 
@@ -13,6 +14,9 @@ game.components.push(greenRectangle);
 
 const helloWorld = new Text("Hello", 100, 100, "red");
 game.components.push(helloWorld);
+
+const startButton = new Image("/images/start-button.png", 170, 100, 100, 60);
+game.components.push(startButton);
 
 const button = document.createElement("button");
 button.innerHTML = "PLAY";
@@ -32,3 +36,9 @@ button.addEventListener("click", () => {
 });
 
 document.body.append(button);
+
+document.addEventListener("fullscreenchange", (event) => {
+  if (!document.fullscreenElement) {
+    game.canvas.hidden = true;
+  }
+});

@@ -1,3 +1,5 @@
+import { background1Sound } from "./sounds.js";
+
 export default class Game {
   constructor() {
     this.canvas = document.createElement("canvas");
@@ -9,10 +11,11 @@ export default class Game {
     this.components = [];
     document.body.append(this.canvas);
     this.setupEventListeners();
-    this.start();
   }
 
   async start() {
+    background1Sound.play();
+
     try {
       await this.update();
     } catch (error) {

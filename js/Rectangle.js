@@ -9,9 +9,7 @@ export default class Rectangle extends ComponentBase {
   }
 
   draw() {
-    if (this.context instanceof CanvasRenderingContext2D) {
-      this.context.fillStyle = this.color;
-      this.context.fillRect(this.x, this.y, this.width, this.height);
-    }
+    this.context.fillStyle = this.color;
+    this.context.fillRect(this.x, this.y, this.width, this.height);
   }
 }
